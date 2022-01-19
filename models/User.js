@@ -19,9 +19,22 @@ const User = new Schema({
   thoughts: [{
     type: Schema.Types.ObjectId,
     ref: 'thought'
-  }]
-}, { timestamps: true })
+  }],
+  friends: [{
+    type: Schema.Types.ObjectId,
+    ref: 'user'
+    }]
+}, 
 
-User.plugin(require('passport-local-mongoose'))
+{
+  toJSON: {
+    virtuals: true
+  },
+  id: false
+}
+
+User.virtual('friendCount').get(function () {
+  return this.friends.length
+})
 
 module.exports = model('user', User)
