@@ -20,4 +20,6 @@ const Reaction = new Schema({
     //set default value to current timestamp
     //use getter method to format timestamp on query
   }
-})
+}, { timestamps: true })
+
+module.exports = model('reaction', Reaction)
