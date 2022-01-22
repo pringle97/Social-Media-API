@@ -1,9 +1,10 @@
-const { Schema, model } = require('mongoose')
+const { Schema, model } = require('mongoose');
+const moment = require('moment');
 
 const Reaction = new Schema({
   reactionId: {
     type: Schema.Types.ObjectId,
-    //default value set to new objectId
+    default: new Types.ObjectId()
   },
   reactionBody: {
     type: String,
@@ -16,10 +17,16 @@ const Reaction = new Schema({
     required: true
   },
   createdAt: {
-    type: Date
-    //set default value to current timestamp
-    //use getter method to format timestamp on query
+    type: Date,
+    default: Date.now,
+    get: (createdAtVal) => moment(createdAtVal).format('MM DD, YYY [at] hh:mm a')
   }
-}, { timestamps: true })
+}, 
+{
+  toJSON: {
+    getters: true
+  },
+  id: false
+})
 
 module.exports = model('reaction', Reaction)
