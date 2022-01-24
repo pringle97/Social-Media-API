@@ -37,4 +37,4 @@ User.virtual('friendCount').get(function () {
   return this.friends.length
 })
 
-module.exports = model('user', User)
+module.exports = model('user', User);

@@ -34,4 +34,4 @@ Thought.virtual('reactionCount').get(function () {
   return this.reactions.length
 })
 
-module.exports = model('thought', Thought)
+module.exports = model('thought', Thought);

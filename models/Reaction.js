@@ -29,4 +29,4 @@ const Reaction = new Schema({
   id: false
 })
 
-module.exports = model('reaction', Reaction)
+module.exports = model('reaction', Reaction);
