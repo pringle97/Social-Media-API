@@ -4,7 +4,7 @@ const moment = require('moment');
 const Reaction = new Schema({
   reactionId: {
     type: Schema.Types.ObjectId,
-    default: new Types.ObjectId()
+    default: () => new Types.ObjectId()
   },
   reactionBody: {
     type: String,
@@ -15,12 +15,12 @@ const Reaction = new Schema({
     type: String,
     ref: 'user',
     required: true
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-    get: (createdAtVal) => moment(createdAtVal).format('MM DD, YYY [at] hh:mm a')
   }
+  // createdAt: {
+  //   type: Date,
+  //   default: Date.now,
+  //   get: (createdAtVal) => moment(createdAtVal).format('MM DD, YYY [at] hh:mm a')
+  // }
 }, 
 {
   toJSON: {
